@@ -2,7 +2,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
 
     <table name="comments_status">
-        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false"  comment="ID"/>
+        <column xsi:type="int" name="id" padding="10" unsigned="true" identity="true" nullable="false"  comment="ID"/>
         <column xsi:type="varchar" name="name" nullable="false" comment="Estado del comentario"/>
         <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Fecha de creacion del estado del comentario" />
         <column xsi:type="timestamp" name="updated_at" nullable="true" comment="Fecha de actualizacion del estado del comentario" />
@@ -12,12 +12,12 @@
     </table>
 
     <table name="comments">
-        <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" comment="ID"/>
+        <column xsi:type="int" name="id" padding="10" unsigned="true" identity="true" nullable="false" comment="ID"/>
         <column xsi:type="varchar" name="email" nullable="false" comment="Email de usuario que comento"/>
         <column xsi:type="int" name="product_id" unsigned="true" nullable="false" comment="Producto relacionado al comentario" />
         <column xsi:type="varchar" name="title_comment" nullable="false" comment="Titulo del comentario" />
         <column xsi:type="varchar" name="description_comment" nullable="false" comment="Descripcion del comentario" />
-        <column xsi:type="int" name="status" unsigned="true" nullable="false" default="0" comment="Estado del comentario | 0 Pendiente | 1 Aprovado | 2 Rechazado | 3 Eliminado " />
+        <column xsi:type="int" name="status" unsigned="true" nullable="false" default="0" comment="Estado del comentario | 1 Aprovado | 2 Pendiente | 3 Rechazado | 4 Eliminado " />
         <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Fecha de creacion del comentario" />
         <column xsi:type="timestamp" name="updated_at" nullable="true" comment="Fecha de actualizacion del comentario" />
         <constraint xsi:type="primary" referenceId="PRIMARY">
