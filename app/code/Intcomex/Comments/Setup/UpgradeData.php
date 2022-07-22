@@ -26,7 +26,7 @@ class UpgradeData implements UpgradeDataInterface
         $setup->startSetup();
 
         if ($context->getVersion()
-            && version_compare($context->getVersion(), '0.1.2') < 0
+            && version_compare($context->getVersion(), '0.1.6') < 0
         ) {
             $tableName = $setup->getTable('comments_status');
 
