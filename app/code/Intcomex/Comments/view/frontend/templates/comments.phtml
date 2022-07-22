@@ -1,5 +1,9 @@
 <?php
+//Product
 $product = $block->getProduct();
+//User
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
 ?>
 <form class="form"
       action="<?= $block->escapeUrl($block->getFormAction()) ?>"
@@ -9,27 +13,30 @@ $product = $block->getProduct();
       data-mage-init='{"validation":{}}'>
     <fieldset class="fieldset">
         <legend class="legend"><span><?= $block->escapeHtml(__('Comment')) ?></span></legend><br />
-        <div class="field email required">
-            <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
-            <div class="control">
-                <input name="email"
-                       id="email"
-                       title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
-                       placeorder="Email"
-                       class="input-text"
-                       type="email"
-                       data-validate="{required:true, 'validate-email':true}"
-                       data-mage-init='{"mage/trim-input":{}}'
-                />
+        <?php if (!($customerSession->isLoggedIn())) { ?>
+            <div class="field email required">
+                <label class="label" for="email"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+                <div class="control">
+                    <input name="email"
+                           id="email"
+                           title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                           placeholder="Email"
+                           class="input-text"
+                           type="email"
+                           data-validate="{required:true, 'validate-email':true}"
+                           data-mage-init='{"mage/trim-input":{}}'
+                    />
+                </div>
             </div>
-        </div>
+        <?php } ?>
+
         <div class="field title-comment required">
             <label class="label" for="name"><span><?= $block->escapeHtml(__('Title Comment')) ?></span></label>
             <div class="control">
                 <input name="title-comment"
                        id="title-comment"
                        title="<?= $block->escapeHtmlAttr(__('Title Comment')) ?>"
-                       placeorder="Tittle Comment"
+                       placeholder="Tittle Comment"
                        class="input-text"
                        type="text"
                        data-validate="{required:true}"/>
@@ -48,7 +55,7 @@ $product = $block->getProduct();
                           cols="5"
                           rows="3"
                           data-validate="{required:true}"
-                ><?= $product->getId(); ?></textarea>
+                ></textarea>
             </div>
         </div>
     </fieldset>

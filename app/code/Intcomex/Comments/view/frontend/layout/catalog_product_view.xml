@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="product.info.details">
-            <block class="Magento\Catalog\Block\Product\View" name="product.info.comments" as="comments" template="Intcomex_Comments::comments.phtml" group="detailed_info" >
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.comments" as="comments" template="Intcomex_Comments::comments.phtml" group="detailed_info" cacheable="false" >
                 <arguments>
                     <argument translate="true" name="title" xsi:type="string">Comments</argument>
                 </arguments>
